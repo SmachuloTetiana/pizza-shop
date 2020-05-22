@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.Cart {
+  margin: 30px 0 !important;
+}
+
+.Cart__PriceBlock {
+  margin-top: 15px;
+}
+
+.CartProductsCount {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #fff;
+}
