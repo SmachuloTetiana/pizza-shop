@@ -11,13 +11,16 @@ const BasketMenu = ({ chooseData }) => {
       <ShoppingCartOutlined
         style={{ color: "#FFF", fontSize: "16px", marginRight: "10px" }}
       />
-      Item - {chooseData.length}
+      Item
+      {/* Item - {chooseData.length} */}
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  chooseData: state.products.chooseData,
-});
+export default BasketMenu;
 
-export default connect(mapStateToProps)(BasketMenu);
+// const mapStateToProps = (state) => ({
+//   chooseData: state.products.chooseData,
+// });
+
+// export default connect(mapStateToProps)(BasketMenu);

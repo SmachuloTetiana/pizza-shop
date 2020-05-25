@@ -13,8 +13,8 @@ export const Header = () => {
         <Menu.Item key="list">
           <Link to="/list">List</Link>
         </Menu.Item>
-        <Menu.Item key="basket">
-          <Link to="/basket">Basket</Link>
+        <Menu.Item key="cart">
+          <Link to="/cart">Cart</Link>
         </Menu.Item>
       </Menu>
 

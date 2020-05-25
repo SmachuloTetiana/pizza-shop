@@ -5,7 +5,7 @@ const { Meta } = Card;
 
 export const ListCard = ({ item, addToBasket }) => {
   const handlClick = () => {
-    addToBasket(item);
+    addToBasket({ ...item, quantity: 1 });
   };
   return (
     <Card
