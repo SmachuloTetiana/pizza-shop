@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
-import Cart from "./Cart";
+import CartList from "./CartList";
 import { incrementQuantity, decrementQuantity } from "store/actions/products";
 
 const mapStateToProps = (state) => ({
   chooseData: state.products.chooseData,
+  total: state.products.total,
 });
 
 const actions = { incrementQuantity, decrementQuantity };
 
-export default connect(mapStateToProps, actions)(Cart);
+export default connect(mapStateToProps, actions)(CartList);

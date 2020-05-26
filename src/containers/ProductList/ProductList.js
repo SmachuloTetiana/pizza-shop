@@ -1,17 +1,17 @@
 import React from "react";
 import { Row, Col } from "antd";
-import { ListCard } from "components/ListCard";
+import { Product } from "components/Product";
 
-const List = ({ products, addToBasket }) => {
+const ProductList = ({ products, addToBasket }) => {
   return (
     <Row justify="space-around">
       {products.map((el) => (
         <Col span={4} key={el.id}>
-          <ListCard item={el} addToBasket={addToBasket} />
+          <Product item={el} onaddToBasket={() => addToBasket(el)} />
         </Col>
       ))}
     </Row>
   );
 };
 
-export default List;
+export default ProductList;

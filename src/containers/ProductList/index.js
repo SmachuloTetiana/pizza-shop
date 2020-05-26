@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import List from "./List";
+import ProductList from "./ProductList";
 import { addToBasket } from "store/actions/products";
 
 const mapStateToProps = (state) => ({
@@ -10,4 +10,4 @@ const actions = {
   addToBasket,
 };
 
-export default connect(mapStateToProps, actions)(List);
+export default connect(mapStateToProps, actions)(ProductList);
