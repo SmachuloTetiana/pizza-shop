@@ -6,6 +6,7 @@ const CartList = ({
   total,
   incrementQuantity,
   decrementQuantity,
+  deleteItem,
 }) => {
   if (!chooseData.length) return <p>No data</p>;
 
@@ -17,6 +18,7 @@ const CartList = ({
           key={item.id}
           onIncrementQuantity={() => incrementQuantity(item.id)}
           onDecrementQuantity={() => decrementQuantity(item.id)}
+          onDeleteItem={() => deleteItem(item.id)}
         />
       ))}
 

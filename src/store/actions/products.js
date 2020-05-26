@@ -2,6 +2,7 @@ import {
   ADD_TO_BASKET,
   INCREMENT_QUANTITY,
   DECREMENT_QUANTITY,
+  DELETE_ITEM,
 } from "store/types";
 
 export const addToBasket = (products) => ({
@@ -16,5 +17,10 @@ export const incrementQuantity = (id) => ({
 
 export const decrementQuantity = (id) => ({
   type: DECREMENT_QUANTITY,
+  id,
+});
+
+export const deleteItem = (id) => ({
+  type: DELETE_ITEM,
   id,
 });
