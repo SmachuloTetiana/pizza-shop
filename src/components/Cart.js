@@ -13,10 +13,12 @@ export const Cart = ({
   return (
     <div className="Cart">
       <strong>{title}</strong>
-      <span>{price * quantity}</span>
+      <span>{price}</span>
+
       <CaretUpOutlined onClick={onIncrementQuantity} />
       <span>Quantity - {quantity}</span>
       <CaretDownOutlined onClick={onDecrementQuantity} />
+
       <Button type="primary" danger onClick={onDeleteItem}>
         Delete
       </Button>

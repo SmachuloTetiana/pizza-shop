@@ -56,40 +56,55 @@ const initialState = {
 };
 
 export const products = (state = initialState, action) => {
-  let filterItem;
+  let newArr;
 
   switch (action.type) {
     case ADD_TO_BASKET:
-      filterItem = state.chooseData.filter(
-        (item) => item.id !== action.products.id
-      );
+      const { quantity = 1 } = state.chooseData;
+
+      newArr = [
+        ...state.chooseData,
+        { ...action.products, quantity: quantity },
+      ];
+
       return {
         ...state,
-        chooseData: [...filterItem, { ...action.products, quantity: 1 }],
+        chooseData: newArr,
+        total: newArr.reduce((obj, { price }) => obj + price, 0),
       };
 
     case INCREMENT_QUANTITY:
-      filterItem = state.chooseData.map((item, key) =>
+      newArr = state.chooseData.map((item) =>
         item.id === action.id ? { ...item, quantity: item.quantity + 1 } : item
       );
       return {
         ...state,
-        chooseData: filterItem,
+        chooseData: newArr,
+        total: newArr.reduce(
+          (obj, { price, quantity }) => obj + price * quantity,
+          0
+        ),
       };
 
     case DECREMENT_QUANTITY:
-      filterItem = state.chooseData.map((item) =>
+      newArr = state.chooseData.map((item) =>
         item.id === action.id ? { ...item, quantity: item.quantity - 1 } : item
       );
       return {
         ...state,
-        chooseData: filterItem,
+        chooseData: newArr,
+        total: newArr.reduce(
+          (obj, { price, quantity }) => obj - price * quantity,
+          0
+        ),
       };
 
     case DELETE_ITEM:
+      newArr = state.chooseData.filter((item) => item.id !== action.id);
       return {
         ...state,
-        chooseData: state.chooseData.filter((item) => item.id !== action.id),
+        chooseData: newArr,
+        total: newArr.reduce((obj, { price }) => obj + price, 0),
       };
 
     default:
