@@ -3,7 +3,7 @@ import "./App.css";
 import "antd/dist/antd.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { Home } from "containers/Home";
+import Home from "containers/Home";
 import ProductList from "containers/ProductList";
 import { Header } from "components/Header";
 import Cart from "containers/Cart";

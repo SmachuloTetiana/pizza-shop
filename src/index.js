@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore, compose } from "redux";
+import { createStore, compose, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import apiMiddleware from "store/middleware/api";
+import { composeWithDevTools } from "redux-devtools-extension";
+
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { reducer } from "store/reducers/rootReducer";
 
-const store = createStore(
-  reducer,
-  compose(
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+const enhancer = composeWithDevTools(applyMiddleware(apiMiddleware));
+
+const store = createStore(reducer, enhancer);
 
 ReactDOM.render(
   <Provider store={store}>

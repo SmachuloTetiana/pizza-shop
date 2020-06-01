@@ -3,6 +3,7 @@ import {
   INCREMENT_QUANTITY,
   DECREMENT_QUANTITY,
   DELETE_ITEM,
+  SET_PRODUCTS,
 } from "store/types";
 
 const initialState = {
@@ -53,6 +54,7 @@ const initialState = {
   ],
   chooseData: [],
   total: 0,
+  forcelateData: [],
 };
 
 export const products = (state = initialState, action) => {
@@ -61,10 +63,11 @@ export const products = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_BASKET:
       const { quantity = 1 } = state.chooseData;
-      newArr = [
-        ...state.chooseData,
-        { ...action.products, quantity: quantity },
-      ];
+      const filter = state.chooseData.filter(
+        (el) => el.id !== action.products.id
+      );
+
+      newArr = [...filter, { ...action.products, quantity: quantity }];
 
       return {
         ...state,
@@ -115,6 +118,12 @@ export const products = (state = initialState, action) => {
           (obj, { price, quantity }) => obj + price * quantity,
           0
         ),
+      };
+
+    case SET_PRODUCTS.SUCCESS:
+      return {
+        ...state,
+        forcelateData: action.products,
       };
 
     default:
