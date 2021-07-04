@@ -22,7 +22,9 @@ const CartList = ({
         />
       ))}
 
-      <p>{total}</p>
+      <p>
+        <strong>Total: {total}</strong>
+      </p>
     </div>
   );
 };
